@@ -1,0 +1,224 @@
+<style type="text/css">
+    .button {
+        text-decoration: none;
+        padding: 9px;
+        font-weight: 200;
+        font-size: 15px;
+        color: #ffffff;
+        background-color: #B6B53A;
+        border-radius: 6px;
+        border: 2px solid #0B0B0A;
+    }
+
+
+    .button1 {
+        text-decoration: none;
+        padding: 9px;
+        font-weight: 200;
+        font-size: 15px;
+        color: #ffffff;
+        background-color: #F90505;
+        border-radius: 6px;
+        border: 2px solid #0B0B0A;
+    }
+
+
+    .button2 {
+        text-decoration: none;
+        padding: 9px;
+        font-weight: 200;
+        font-size: 15px;
+        color: #ffffff;
+        background-color: #A46D6D;
+        border-radius: 6px;
+        border: 2px solid #0B0B0A;
+    }
+</style>
+
+<form class="form-horizontal"
+      name="clientForm"
+      novalidate
+      ng-controller="ClientEditCtrl as vm">
+    <fieldset>
+        <legend>Basic Client Information</legend>
+        <div class="form-group"
+             ng-class="{'has-error':clientForm.inputLastNamee.$invalid &&
+                                    clientForm.inputLastName.$dirty}">
+            <label class="col-md-2 control-label"
+                   for="inputLastName">Last Name</label>
+
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputLastName"
+                       name="inputLastName"
+                       type="text"
+                       placeholder="Last Name (required)"
+                       ng-model="vm.client.lastName"
+                       required
+                       ng-minlength="4"
+                       ng-maxlength="12" />
+            </div>
+            <span class="help-block has-error">
+                <span ng-show="clientForm.inputLastName.$error.required">
+                    Client name is required.
+                </span>
+                <span ng-show="clientForm.inputLastName.$error.minlength">
+                    Client name must be at least 4 characters in length.
+                </span>
+                <span ng-show="clientForm.inputLastName.$error.maxlength">
+                    Client name cannot exceed 12 characters in length.
+                </span>
+            </span>
+        </div>
+        <div class="form-group row"
+             ng-class="{'has-error':clientForm.inputLastNamee.$invalid &&
+                                    clientForm.inputLastName.$dirty}">
+            <label class="col-md-2 control-label"
+                   for="inputName">First Name</label>
+
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputName"
+                       name="inputName"
+                       type="text"
+                       placeholder="Name (required)"
+                       ng-model="vm.client.name"
+                       required
+                       ng-minlength="4"
+                       ng-maxlength="12" />
+            </div>
+            <span class="help-block has-error">
+                <span ng-show="clientForm.inputName.$error.required">
+                    Client name is required.
+                </span>
+                <span ng-show="clientForm.inputName.$error.minlength">
+                    Client name must be at least 4 characters in length.
+                </span>
+                <span ng-show="clientForm.inputName.$error.maxlength">
+                    Client name cannot exceed 12 characters in length.
+                </span>
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-2 control-label"
+                   for="inputBirthdate">Birthdate</label>
+            <div class="col-md-4">
+                    <input class="form-control"
+                           id="inputBirthdate"
+                           name="inputBirthdate"
+                           type="date"
+                           placeholder="Birthdate (required)"
+                           ng-model="vm.client.birthdate"
+                           required
+                           ng-minlength="4"
+                           ng-maxlength="12" />
+                <label class="col-md-2 control-label"
+                       for="inputBirthdate">age</label>
+                <input class="form-control"
+                       id="inputBirthdate"
+                       name="inputBirthdate"
+                       type="date"
+                       placeholder="Birthdate (required)"
+                       ng-model="vm.client.birthdate"
+                       required
+                       ng-minlength="4"
+                       ng-maxlength="12" />
+                </div>
+            </div>
+        
+
+        <div class="form-group row"
+             ng-class="{'has-error':clientForm.inputLastNamee.$invalid &&
+                                    clientForm.inputLastName.$dirty}">
+            <label class="col-md-2 control-label"
+                   for="inputPhone">Phone</label>
+
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputPhone"
+                       name="inputPhone"
+                       type="text"
+                       placeholder="Phone (required)"
+                       ng-model="vm.client.phone"
+                       required
+                       ng-minlength="4"
+                       ng-maxlength="12" />
+            </div>
+            <span class="help-block has-error">
+                <span ng-show="clientForm.inputPhone.$error.required">
+                    Client name is required.
+                </span>
+                <span ng-show="clientForm.inputPhone.$error.minlength">
+                    Client name must be at least 4 characters in length.
+                </span>
+                <span ng-show="clientForm.inputPhone.$error.maxlength">
+                    Client name cannot exceed 12 characters in length.
+                </span>
+            </span>
+        </div>
+
+        <div class="form-group row"
+             ng-class="{'has-error':clientForm.inputLastNamee.$invalid &&
+                                    clientForm.inputLastName.$dirty}">
+            <label class="col-md-2 control-label"
+                   for="inputAddress">Address</label>
+
+            <div class="col-md-4">
+                <input class="form-control"
+                       id="inputAddress"
+                       name="inputAddress"
+                       type="text"
+                       placeholder="Address (required)"
+                       ng-model="vm.client.address"
+                       required
+                       ng-minlength="4"
+                       ng-maxlength="12" />
+            </div>
+            <span class="help-block has-error">
+                <span ng-show="clientForm.inputAddress.$error.required">
+                    Client name is required.
+                </span>
+                <span ng-show="clientForm.inputAddress.$error.minlength">
+                    Client name must be at least 4 characters in length.
+                </span>
+                <span ng-show="clientForm.inputAddress.$error.maxlength">
+                    Client name cannot exceed 12 characters in length.
+                </span>
+            </span>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button class="btn btn-primary"
+                            style="width:80px;margin-right:10px"
+                            ng-click="vm.submit()"
+                            ng-disabled="clientForm.$invalid">
+                        Save
+                    </button>
+                </span>
+                <span>
+                    <button class="btn btn-default"
+                            style="width:70px"
+                            ng-click="vm.cancel(clientForm)">
+                        Cancel
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group"
+             ng-show="vm.message">
+            <div class="col-md-6">
+                <pre style="font: inherit">{{vm.message }}</pre>
+            </div>
+        </div>
+
+    </fieldset>
+    <h5>
+        <button class="btn btn-success button2" ui-sref="client-list" href="">  Return  </button>
+    </h5>
+</form>
+

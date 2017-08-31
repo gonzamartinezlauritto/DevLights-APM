@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Acme Product Management</title>
+
+    <!-- Style sheets -->
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+
+    <!-- Library Scripts -->
+    <script src="scripts/angular.js"></script>
+    <script src="Scripts/angular-resource.js"></script>
+    <!-- Application Script -->
+    <script src="common/common.services.js"></script>
+    <script src="app/app.js"></script>
+    <script src="//unpkg.com/@uirouter/angularjs@1.0.5/release/angular-ui-router.js"></script>
+
+    <!-- Services -->
+    <script src="common/ClientResource .js"></script>
+    <script src="common/productResource.js"></script>
+
+    <!-- Product Controllers -->
+    <script src="app/client/clientListCtrl.js"></script>
+    <script src="app/client/clientEditCtrl.js"></script>
+    <script src="app/products/productListCtrl.js"></script>
+    <script src="app/products/productEditCtrl.js"></script>
+</head>
+
+<body ng-app="productManagement">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand">Acme Product Management</div>
+            </div>
+        </div>
+     </nav>
+
+    <ul class="nav nav-pills">
+    <li role="presentation" ><a ui-sref="list"  href="#">Product</a></li>
+    <li role="presentation" ><a ui-sref="client-list" href="#">Client</a></li>
+   
+</ul>
+   
+    <div class="container">
+        <!--<div ng-include="'app/products/productListView.html'"></div>-->
+        <ui-view></ui-view>
+        
+    </div>
+
+   <div>
+
+
+    </div>
+</body>
+
+</html>

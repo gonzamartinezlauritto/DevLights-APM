@@ -1,0 +1,42 @@
+[
+  {
+    "ProductId": 1,
+    "Price": 200.0000,
+    "Description": "Hamemr",
+    "ProductCode": "31",
+    "ProductName": "Nose",
+    "ReleaseDate": "2017-08-28T00:00:00"
+  },
+  {
+    "ProductId": 2,
+    "Price": 125421.0,
+    "Description": "dasdxzczx",
+    "ProductCode": "01276",
+    "ProductName": "gobzaad",
+    "ReleaseDate": "2017-08-28T12:58:59.5728372"
+  },
+  {
+    "ProductId": 3,
+    "Price": null,
+    "Description": "Negro",
+    "ProductCode": "02145",
+    "ProductName": "Termo",
+    "ReleaseDate": "2017-08-29T09:37:27.6112219"
+  },
+  {
+    "ProductId": 4,
+    "Price": 1231.0000,
+    "Description": "fsdsdf",
+    "ProductCode": "2754",
+    "ProductName": "sada",
+    "ReleaseDate": "2017-08-29T10:17:47.4266827"
+  },
+  {
+    "ProductId": 5,
+    "Price": 78465.0000,
+    "Description": "parlante para pc",
+    "ProductCode": "2148",
+    "ProductName": "over",
+    "ReleaseDate": "2017-08-29T11:32:33.8483385"
+  }
+]
