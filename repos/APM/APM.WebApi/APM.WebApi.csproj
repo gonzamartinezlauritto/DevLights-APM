@@ -232,6 +232,9 @@
     </Compile>
     <Compile Include="Models\ClientRepository.cs" />
     <Compile Include="Models\ProductRepository.cs" />
+    <Compile Include="Models\SalesProduct.cs">
+      <DependentUpon>APMModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

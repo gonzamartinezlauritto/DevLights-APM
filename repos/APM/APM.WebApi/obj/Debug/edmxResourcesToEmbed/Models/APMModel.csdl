@@ -3,6 +3,8 @@
   <EntityContainer Name="APMEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Products" EntityType="APMModel.Product" />
     <EntitySet Name="Clients" EntityType="APMModel.Client" />
+    <EntitySet Name="Sales" EntityType="APMModel.Sale" />
+    <EntitySet Name="SalesProducts" EntityType="APMModel.SalesProduct" />
   </EntityContainer>
   <EntityType Name="Product">
     <Key>
@@ -25,5 +27,23 @@
     <Property Name="Birthdate" Type="DateTime" Precision="7" />
     <Property Name="Phone" Type="Int32" />
     <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Sale">
+    <Key>
+      <PropertyRef Name="SaleId" />
+    </Key>
+    <Property Name="SaleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ClientId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesProduct">
+    <Key>
+      <PropertyRef Name="SaleProductId" />
+    </Key>
+    <Property Name="SaleProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Price" Type="Single" />
+    <Property Name="SaleId" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

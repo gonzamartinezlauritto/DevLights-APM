@@ -43,7 +43,14 @@
             .state("client-edit", {
                 url: "/clientEditView",
                 templateUrl: "app/client/clientEditView.html",
-            });
+            })
+
+         //---------------Clients----------------------
+            .state("sale", {
+                url: "/saleView",
+                templateUrl: "app/sales/saleView.html",
+             
+             });
 
 
           $urlRouterProvider.otherwise("/productListView");

@@ -17,11 +17,13 @@
     <script src="//unpkg.com/@uirouter/angularjs@1.0.5/release/angular-ui-router.js"></script>
 
     <!-- Services -->
+    <script src="common/SaseResource.js"></script>
     <script src="common/ClientResource .js"></script>
     <script src="common/productResource.js"></script>
 
     <!-- Product Controllers -->
     <script src="app/client/clientListCtrl.js"></script>
+    <script src="app/Clients/saleCtrl.js"></script>>
     <script src="app/client/clientEditCtrl.js"></script>
     <script src="app/products/productListCtrl.js"></script>
     <script src="app/products/productEditCtrl.js"></script>
@@ -34,21 +36,22 @@
                 <div class="navbar-brand">Acme Product Management</div>
             </div>
         </div>
-     </nav>
+    </nav>
 
     <ul class="nav nav-pills">
-    <li role="presentation" ><a ui-sref="list"  href="#">Product</a></li>
-    <li role="presentation" ><a ui-sref="client-list" href="#">Client</a></li>
-   
-</ul>
-   
+        <li role="presentation"><a ui-sref="list" href="#">List Product</a></li>
+        <li role="presentation"><a ui-sref="client-list" href="#">List Client</a></li>
+        <li role="presentation"><a ui-sref="sale" href="#">Clients</a></li>
+    </ul>
+    <br />
+    <br />
     <div class="container">
         <!--<div ng-include="'app/products/productListView.html'"></div>-->
         <ui-view></ui-view>
-        
+
     </div>
 
-   <div>
+    <div>
 
 
     </div>

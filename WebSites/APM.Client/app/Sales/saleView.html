@@ -1,0 +1,42 @@
+﻿
+<form class="form-horizontal"
+      name="clientForm"
+      novalidate
+      ng-controller="SaleCtrl as vm">
+
+    <div class="panel-heading"
+         style="color:brown;font-size:large;margin-left:30%">
+        Clients
+    </div>
+    <br />
+    <div class="form-group"
+         ng-class="{'has-error':saleForm.client.$invalid &&
+                                    saleForm.client.$dirty}">
+        <label class="col-md-2 control-label" for="inputProductCode">Client </label>
+        <div class="col-md-4">
+            <select name="client" class="form-control" form="saleForm">
+                <option ng-repeat="client in vm.clients" value="value"> {{client.clientName}}</option>
+            </select>
+        </div>
+        <span class="help-block has-error"
+              ng-show="saleForm.inputProductCode.$invalid ">
+            Client is required
+        </span>
+    </div>
+    <br />
+
+    <div class="form-group"
+         ng-class="{'has-error':saleForm.product.$invalid &&
+                                    saleForm.product.$dirty}">
+        <label class="col-md-2 control-label" for="inputProductCode">Product </label>
+        <div class="col-md-4">
+            <select name="product" class="form-control" form="saleForm">
+                <option ng-repeat="product in vm.product" value="value"> {{product.productName}}</option>
+            </select>
+        </div>
+        <span class="help-block has-error"
+              ng-show="saleForm.inputProductCode.$invalid ">
+            Client is required
+        </span>
+    </div>
+    </form>

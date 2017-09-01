@@ -22,8 +22,28 @@
     <Property Name="ProductName" Type="varchar" MaxLength="300" />
     <Property Name="ReleaseDate" Type="datetime2" Precision="7" />
   </EntityType>
+  <EntityType Name="Sales">
+    <Key>
+      <PropertyRef Name="SaleId" />
+    </Key>
+    <Property Name="SaleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesProducts">
+    <Key>
+      <PropertyRef Name="SaleProductId" />
+    </Key>
+    <Property Name="SaleProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Price" Type="real" />
+    <Property Name="SaleId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityContainer Name="APMModelStoreContainer">
     <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalesProducts" EntityType="Self.SalesProducts" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>
