@@ -20,5 +20,7 @@ namespace APM.WebApi.Models
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
         public Nullable<System.DateTime> ReleaseDate { get; set; }
+    
+        public virtual SalesProduct SalesProduct { get; set; }
     }
 }

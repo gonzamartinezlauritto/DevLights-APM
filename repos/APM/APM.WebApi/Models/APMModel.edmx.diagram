@@ -6,9 +6,13 @@
     <edmx:Diagrams>
       <Diagram DiagramId="23b2dd4dceeb4bfd8d594fa21439f73b" Name="Diagram1" >
         <EntityTypeShape EntityType="APMModel.Product" Width="1.5" PointX="1.625" PointY="0.5" />
-        <EntityTypeShape EntityType="APMModel.Client" Width="1.5" PointX="5.125" PointY="0.625" />
-        <EntityTypeShape EntityType="APMModel.Client" Width="1.5" PointX="5.625" PointY="3.5" />
+        <EntityTypeShape EntityType="APMModel.Client" Width="1.75" PointX="5" PointY="0.875" />
         <EntityTypeShape EntityType="APMModel.ClientsProduct" Width="1.5" PointX="2.375" PointY="3.375" />
+        <EntityTypeShape EntityType="APMModel.Sale" Width="1.5" PointX="7.5" PointY="1.25" />
+        <EntityTypeShape EntityType="APMModel.SalesProduct" Width="1.5" PointX="9.75" PointY="0.75" />
+        <AssociationConnector Association="APMModel.FK_Sales_Client" />
+        <AssociationConnector Association="APMModel.FK_SalesProducts_Product" />
+        <AssociationConnector Association="APMModel.FK_SalesProducts_Sales" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

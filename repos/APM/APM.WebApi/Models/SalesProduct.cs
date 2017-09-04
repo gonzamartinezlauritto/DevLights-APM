@@ -12,12 +12,15 @@ namespace APM.WebApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ClientsProduct
+    public partial class SalesProduct
     {
-        public int ClientProductId { get; set; }
+        public int SaleProductId { get; set; }
         public int ProductId { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<float> Price { get; set; }
-        public int ClientId { get; set; }
+        public int SaleId { get; set; }
+    
+        public virtual Product Product { get; set; }
+        public virtual Sale Sale { get; set; }
     }
 }

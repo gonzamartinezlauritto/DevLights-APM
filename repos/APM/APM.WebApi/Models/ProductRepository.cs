@@ -57,6 +57,8 @@ namespace APM.WebAPI.Models
 
             using (var db = new APMEntities())
             {
+                db.Configuration.LazyLoadingEnabled = false;
+
                 return db.Products.ToList();
 
 

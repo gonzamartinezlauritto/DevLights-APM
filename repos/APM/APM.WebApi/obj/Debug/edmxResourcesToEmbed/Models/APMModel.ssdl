@@ -40,10 +40,58 @@
     <Property Name="Price" Type="real" />
     <Property Name="SaleId" Type="int" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Sales_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="Sales">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesProducts_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="SalesProducts" Type="Self.SalesProducts" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="SalesProducts">
+        <PropertyRef Name="SaleProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesProducts_Sales">
+    <End Role="Sales" Type="Self.Sales" Multiplicity="1" />
+    <End Role="SalesProducts" Type="Self.SalesProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sales">
+        <PropertyRef Name="SaleId" />
+      </Principal>
+      <Dependent Role="SalesProducts">
+        <PropertyRef Name="SaleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="APMModelStoreContainer">
     <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SalesProducts" EntityType="Self.SalesProducts" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Sales_Client" Association="Self.FK_Sales_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Sales" EntitySet="Sales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesProducts_Product" Association="Self.FK_SalesProducts_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="SalesProducts" EntitySet="SalesProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesProducts_Sales" Association="Self.FK_SalesProducts_Sales">
+      <End Role="Sales" EntitySet="Sales" />
+      <End Role="SalesProducts" EntitySet="SalesProducts" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

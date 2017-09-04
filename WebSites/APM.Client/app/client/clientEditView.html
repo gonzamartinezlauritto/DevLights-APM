@@ -158,11 +158,10 @@
                        id="inputAddress"
                        name="inputAddress"
                        type="text"
-                       placeholder="Address (required)"
                        ng-model="vm.client.address"
                        required
                        ng-minlength="4"
-                       ng-maxlength="12" />
+                       ng-maxlength="30" />
             </div>
             <span class="help-block has-error">
                 <span ng-show="clientForm.inputAddress.$error.required">

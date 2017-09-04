@@ -12,22 +12,20 @@ namespace APM.WebApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Client
+    public partial class Sale
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Client()
+        public Sale()
         {
-            this.Sales = new HashSet<Sale>();
+            this.SalesProducts = new HashSet<SalesProduct>();
         }
     
+        public int SaleId { get; set; }
+        public System.DateTime Date { get; set; }
         public int ClientId { get; set; }
-        public string LastName { get; set; }
-        public string Name { get; set; }
-        public Nullable<System.DateTime> Birthdate { get; set; }
-        public Nullable<int> Phone { get; set; }
-        public string Address { get; set; }
     
+        public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sale> Sales { get; set; }
+        public virtual ICollection<SalesProduct> SalesProducts { get; set; }
     }
 }

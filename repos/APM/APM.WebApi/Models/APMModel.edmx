@@ -45,11 +45,59 @@
           <Property Name="Price" Type="real" />
           <Property Name="SaleId" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Sales_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesProducts_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SalesProducts" Type="Self.SalesProducts" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="SalesProducts">
+              <PropertyRef Name="SaleProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesProducts_Sales">
+          <End Role="Sales" Type="Self.Sales" Multiplicity="1" />
+          <End Role="SalesProducts" Type="Self.SalesProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="SaleId" />
+            </Principal>
+            <Dependent Role="SalesProducts">
+              <PropertyRef Name="SaleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="APMModelStoreContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalesProducts" EntityType="Self.SalesProducts" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Sales_Client" Association="Self.FK_Sales_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesProducts_Product" Association="Self.FK_SalesProducts_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SalesProducts" EntitySet="SalesProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesProducts_Sales" Association="Self.FK_SalesProducts_Sales">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="SalesProducts" EntitySet="SalesProducts" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -60,6 +108,18 @@
           <EntitySet Name="Clients" EntityType="APMModel.Client" />
           <EntitySet Name="Sales" EntityType="APMModel.Sale" />
           <EntitySet Name="SalesProducts" EntityType="APMModel.SalesProduct" />
+          <AssociationSet Name="FK_Sales_Client" Association="APMModel.FK_Sales_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesProducts_Product" Association="APMModel.FK_SalesProducts_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="SalesProduct" EntitySet="SalesProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesProducts_Sales" Association="APMModel.FK_SalesProducts_Sales">
+            <End Role="Sale" EntitySet="Sales" />
+            <End Role="SalesProduct" EntitySet="SalesProducts" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Product">
           <Key>
@@ -71,6 +131,7 @@
           <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProductName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="ReleaseDate" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="SalesProduct" Relationship="APMModel.FK_SalesProducts_Product" FromRole="Product" ToRole="SalesProduct" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -82,6 +143,7 @@
           <Property Name="Birthdate" Type="DateTime" Precision="7" />
           <Property Name="Phone" Type="Int32" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Sales" Relationship="APMModel.FK_Sales_Client" FromRole="Client" ToRole="Sale" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -90,6 +152,8 @@
           <Property Name="SaleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="APMModel.FK_Sales_Client" FromRole="Sale" ToRole="Client" />
+          <NavigationProperty Name="SalesProducts" Relationship="APMModel.FK_SalesProducts_Sales" FromRole="Sale" ToRole="SalesProduct" />
         </EntityType>
         <EntityType Name="SalesProduct">
           <Key>
@@ -100,7 +164,45 @@
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Price" Type="Single" />
           <Property Name="SaleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="APMModel.FK_SalesProducts_Product" FromRole="SalesProduct" ToRole="Product" />
+          <NavigationProperty Name="Sale" Relationship="APMModel.FK_SalesProducts_Sales" FromRole="SalesProduct" ToRole="Sale" />
         </EntityType>
+        <Association Name="FK_Sales_Client">
+          <End Type="APMModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="APMModel.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesProducts_Product">
+          <End Type="APMModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="APMModel.SalesProduct" Role="SalesProduct" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="SalesProduct">
+              <PropertyRef Name="SaleProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesProducts_Sales">
+          <End Type="APMModel.Sale" Role="Sale" Multiplicity="1" />
+          <End Type="APMModel.SalesProduct" Role="SalesProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sale">
+              <PropertyRef Name="SaleId" />
+            </Principal>
+            <Dependent Role="SalesProduct">
+              <PropertyRef Name="SaleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

@@ -45,7 +45,7 @@
                 templateUrl: "app/client/clientEditView.html",
             })
 
-         //---------------Clients----------------------
+         //---------------Sale----------------------
             .state("sale", {
                 url: "/saleView",
                 templateUrl: "app/sales/saleView.html",
